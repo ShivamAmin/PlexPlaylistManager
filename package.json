@@ -1,12 +1,16 @@
 {
-  "name": "plexplaylistmanager",
-  "version": "1.0.0",
-  "description": "Manage Plex Playlists",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.9"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "name": "with-vite"
 }
