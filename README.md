@@ -1,0 +1,2 @@
+# PlexPlaylistManager
+Manage Plex Playlists
