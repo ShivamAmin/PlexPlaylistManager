@@ -10,6 +10,7 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
+    "@lukehagar/plexjs": "^0.18.1",
     "@repo/ui": "workspace:*"
   },
   "devDependencies": {
