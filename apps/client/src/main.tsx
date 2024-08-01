@@ -1,6 +1,16 @@
-import React, { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import React, { StrictMode, Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const ReactQueryDevtools =
+  import.meta.env.PROD
+    ? () => null // Render nothing in production
+    : React.lazy(() =>
+        // Lazy load in development
+        import('@tanstack/react-query-devtools').then((res) => ({
+          default: res.ReactQueryDevtools,
+        })),
+      )
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -15,13 +25,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+const queryClient = new QueryClient();
+
 // Render the app
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <Suspense>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Suspense>
+      </QueryClientProvider>
     </StrictMode>,
   )
 }
