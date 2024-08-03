@@ -3,18 +3,53 @@
 @tailwind utilities;
 
 @layer components {
-  .sidebar-icon {
-    @apply relative flex items-center justify-center h-12 w-12 mb-2 mx-auto shadow-lg
-           bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white
-           rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear
-           cursor-pointer;
-  }
   .sidebar-tooltip {
     @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white 
          bg-gray-900 text-xs font-bold transition-all duration-100 scale-0
            origin-left z-0;
   }
-  .page {
-    @apply h-auto m-0 ml-16;
+  .sidebar-hr {
+    @apply bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800
+           rounded-full mx-2;
   }
+
+  .page {
+    @apply bg-primary flex flex-col-reverse h-screen w-screen;
+  }
+
+  .navbar {
+    @apply flex h-16 w-screen bg-secondary items-center justify-center;
+  }
+
+  .content {
+    @apply flex flex-grow justify-center;
+  }
+
+  .navbar-item {
+    @apply bg-inherit;
+  }
+
+  .navbar-divider {
+    @apply bg-blue-500;
+  }
+
+  .navbar-icon {
+    @apply relative flex items-center justify-center h-12 w-12 mb-2 mx-auto shadow-lg
+           bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white
+           rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear
+           cursor-pointer;
+  }
+
+  /*
+  @apply flex flex-wrap items-center justify-center h-12 w-12 gap-2 shadow-lg
+    bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white
+    rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear
+    cursor-pointer;
+  */
+
+  .navbar-tooltip {
+    @apply hidden;
+  }
+
+
 }
