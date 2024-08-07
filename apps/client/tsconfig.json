@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "extends": "@repo/typescript-config/vite.json",
   "include": ["src"]
