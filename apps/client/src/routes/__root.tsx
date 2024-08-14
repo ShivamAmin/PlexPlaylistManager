@@ -1,5 +1,8 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
 import React, { Suspense } from 'react';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { NavbarItem } from '../components/NavbarItem';
+import { NavbarDivider } from '../components/NavbarDivider';
+import { FaMusic, FaCog } from "react-icons/fa";
 const TanStackRouterDevtools =
   import.meta.env.PROD
     ? () => null // Render nothing in production
@@ -15,19 +18,19 @@ const TanStackRouterDevtools =
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{' '}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
+      <div className="page">
+        <div className="navbar">
+          <NavbarItem to="/" icon={<FaMusic size="25" />} text="Playlist Management"/>
+          <NavbarDivider />
+          <NavbarItem to="/config" icon={<FaCog size="25" />} text="Settings" />
+        </div>
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
-      <hr />
-      <Outlet />
       <Suspense>
-        <TanStackRouterDevtools />
+        <TanStackRouterDevtools position='top-right' />
       </Suspense>
     </>
   ),
-})
+});
