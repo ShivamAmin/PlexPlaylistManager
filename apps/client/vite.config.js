@@ -9,6 +9,11 @@ export default defineConfig({
     TanStackRouterVite(),
     react()
   ],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:5000'
+    }
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
