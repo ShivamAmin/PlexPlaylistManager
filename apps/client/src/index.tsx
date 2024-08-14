@@ -1,6 +1,6 @@
 import React, { StrictMode, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import "./index.css";
+import "@/index.css";
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const ReactQueryDevtools =
