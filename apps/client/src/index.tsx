@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom/client';
 import "@/index.css";
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { v4 } from 'uuid';
+import { routeTree } from './routeTree.gen';
+
+
+let clientID = localStorage.getItem('X-Plex-Client-Identifier');
+if (!clientID) {
+  const uuid = v4();
+  localStorage.setItem('X-Plex-Client-Identifier', uuid);
+  clientID = uuid;
+}
+
+const authToken = localStorage.getItem('authToken');
+
 const ReactQueryDevtools =
   import.meta.env.PROD
     ? () => null // Render nothing in production
@@ -13,11 +26,10 @@ const ReactQueryDevtools =
         })),
       )
 
-// Import the generated route tree
-import { routeTree } from './routeTree.gen'
-
 // Create a new router instance
-const router = createRouter({ routeTree })
+const router = createRouter({ routeTree, context: {
+  authToken: authToken,
+}})
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {
